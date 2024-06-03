@@ -68,11 +68,7 @@ export async function POST(req: Request) {
         avatar: image_url
     };
 
-
-    console.log("starting process")
-    console.log(WEBHOOK_SECRET)
     const newUser = await saveOrUpdateUser(user);
-    console.log("ending process")
 
     return NextResponse.json({ message: "New user created", user: newUser });
   }
