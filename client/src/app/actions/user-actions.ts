@@ -6,6 +6,7 @@ import { serverUrl } from "@/lib/utils";
 // CREATE NEW USER
 export const saveOrUpdateUser = async (userData: SaveUserProps) => {
     try {
+        console.log("running save function...")
         const response = await fetch(`${serverUrl}/users/save`, {
             method: 'POST',
             headers: {
