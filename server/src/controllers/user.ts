@@ -19,7 +19,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 // CREATE OR UPDATE USER
 export const saveOrUpdateUser = async (req: Request, res: Response) => {
     try {
-        const { firstname, lastname, email, avatar } = req.body;
+        const { firstName, lastName, email, avatar } = req.body;
 
         const user = await db.select()
             .from(UserTable)
@@ -28,8 +28,8 @@ export const saveOrUpdateUser = async (req: Request, res: Response) => {
         if (user.length > 0) {
             await db.update(UserTable)
                 .set({
-                    firstName: firstname,
-                    lastName: lastname,
+                    firstName: firstName,
+                    lastName: lastName,
                     email: email,
                     avatar: avatar
                 })
@@ -37,8 +37,8 @@ export const saveOrUpdateUser = async (req: Request, res: Response) => {
         } else {
             await db.insert(UserTable)
                 .values({
-                    firstName: firstname,
-                    lastName: lastname,
+                    firstName: firstName,
+                    lastName: lastName,
                     email: email,
                     avatar: avatar
                 })
