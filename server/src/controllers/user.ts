@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import db from "../db";
 import { UserTable } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { clientUrl } from "../lib/utils";
 
 
 // GET ALL USERS
@@ -44,13 +45,34 @@ export const saveOrUpdateUser = async (req: Request, res: Response) => {
                 })
         }
 
-        const savedUser = await db.select()
-            .from(UserTable)
-            .where(eq(UserTable.email, email))
+        const savedUser = await db.query
+            .UserTable
+            .findFirst({
+                where: eq(UserTable.email, email)
+            })
+
+        const redirectUrl = `${clientUrl}/workspace/${savedUser?.userId}`;
+        res.setHeader('Location', redirectUrl);
         
         res.status(201).json(savedUser);
 
     } catch (err) {
         res.status(500).json({ message: err })
+    }
+};
+
+// GET USER BY EMAIL
+export const getUserByEmail = async (req: Request, res: Response) => {
+    try {
+        const { email } = req.params;
+        const user = await db.query
+            .UserTable
+            .findFirst({
+                where: eq(UserTable.email, email)
+            })
+
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(500).json(err);
     }
 };
