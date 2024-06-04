@@ -1,5 +1,5 @@
 import { relations, sql } from "drizzle-orm";
-import { pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { pgTable, smallint, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { BoardTable } from "./board-table";
 import { CardTable } from "./card-table";
 
@@ -7,6 +7,7 @@ import { CardTable } from "./card-table";
 export const ListTable = pgTable("listTable", {
     listId: uuid("listId").defaultRandom().primaryKey(),
     name: varchar("name").notNull(),
+    position: smallint("position"),
     boardId: uuid("boardId").references(() => BoardTable.boardId, { onDelete: "cascade" }),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updatedAt").default(sql`current_timestamp`),

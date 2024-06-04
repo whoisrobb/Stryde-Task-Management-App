@@ -4,6 +4,18 @@ import { UserTable } from "../db/schema";
 import { eq } from "drizzle-orm";
 
 
+// GET ALL USERS
+export const getAllUsers = async (req: Request, res: Response) => {
+    try {
+        const users = await db.select()
+                .from(UserTable)
+
+        res.status(200).json(users);        
+    } catch (err) {
+        res.status(500).json({ message: err })
+    }
+};
+
 // CREATE OR UPDATE USER
 export const saveOrUpdateUser = async (req: Request, res: Response) => {
     try {
