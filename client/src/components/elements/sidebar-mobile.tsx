@@ -23,7 +23,7 @@ const SidebarMobile = () => {
   const { sheetIsOpen, sheetOpenChange } = useSidebarStore((state) => state)
   return (
     <Sheet onOpenChange={sheetOpenChange} open={sheetIsOpen}>
-      <SheetTrigger asChild>
+      <SheetTrigger asChild className='lg:hidden'>
         <Button variant={"outline"} size={"icon"}><HamburgerMenuIcon /></Button>
       </SheetTrigger>
       <SheetContent side={'left'}>
