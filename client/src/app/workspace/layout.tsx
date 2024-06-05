@@ -1,3 +1,4 @@
+import Header from '@/components/layouts/header';
 import Sidebar from '@/components/layouts/sidebar';
 import React from 'react';
 
@@ -9,8 +10,8 @@ export default function WorkspaceLayout({
   return (
     <body className="flex h-screen">
         <Sidebar />
-            <div className="">
-
+            <div className="px-2 w-full">
+                <Header />
                 {children}
             </div>
     </body>
