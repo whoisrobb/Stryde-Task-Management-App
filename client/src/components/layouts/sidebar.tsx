@@ -4,7 +4,7 @@ import SidebarDesktop from '../elements/sidebar-desktop'
 
 const Sidebar = () => {
   return (
-    <div className='border-r'>
+    <div className='border-r lg:block hidden'>
       <SidebarHeader />
       <SidebarDesktop />
     </div>

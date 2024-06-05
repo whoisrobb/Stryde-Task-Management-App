@@ -13,7 +13,7 @@ const SidebarDesktop = () => {
     const user = useUserStore((state) => state.userData);
     const sidebarNav = useSidebarStore((state) => state.navItems);    
   return (
-    <div className="w-[17rem] h-[calc(100vh-4rem)] justify-between lg:flex hidden flex-col gap-4 px-2 py-4">
+    <div className="w-[17rem] h-[calc(100vh-4rem)] justify-between flex flex-col gap-4 px-2 py-4">
       <div className="">
         {sidebarNav.map((nav, index) => (
           <div className="" key={index}>
