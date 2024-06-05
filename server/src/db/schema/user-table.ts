@@ -9,6 +9,8 @@ export const UserTable = pgTable("user", {
     lastName: varchar("lastName").notNull(),
     email: varchar("email").notNull().unique(),
     avatar: varchar("avatar").default(""),
+    description: varchar("description").default(''),
+    domain: varchar("domain").default(''),
     createdAt: timestamp("createdAt").defaultNow().notNull()
 });
 
@@ -19,3 +21,5 @@ export const UserTableRelations = relations(UserTable,
         }
     }
 );
+
+export type User = typeof UserTable.$inferSelect;

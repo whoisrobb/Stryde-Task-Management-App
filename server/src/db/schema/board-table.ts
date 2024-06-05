@@ -24,3 +24,5 @@ export const BoardTableRelations = relations(BoardTable,
         }
     }
 );
+
+export type Board = typeof BoardTable.$inferSelect;

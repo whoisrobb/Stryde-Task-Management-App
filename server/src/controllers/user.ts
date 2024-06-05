@@ -50,9 +50,6 @@ export const saveOrUpdateUser = async (req: Request, res: Response) => {
             .findFirst({
                 where: eq(UserTable.email, email)
             })
-
-        const redirectUrl = `${clientUrl}/workspace/${savedUser?.userId}`;
-        res.setHeader('Location', redirectUrl);
         
         res.status(201).json(savedUser);
 
@@ -72,6 +69,29 @@ export const getUserByEmail = async (req: Request, res: Response) => {
             })
 
         res.status(200).json(user);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
+// UPDATE USER DATA
+export const updateUserdata = async (req: Request, res: Response) => {
+    try {
+        const { userId } = req.params;
+        const { firstName, lastName, domain, description } = req.body;
+
+        const user = await db.update(UserTable)
+            .set({
+                firstName: firstName,
+                lastName: lastName,
+                domain: domain,
+                description: description
+            })
+            .where(eq(UserTable.userId, userId))
+            .returning()
+        
+        res.status(200).json(user[0]);
+
     } catch (err) {
         res.status(500).json(err);
     }

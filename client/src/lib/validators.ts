@@ -1,0 +1,8 @@
+import { z } from "zod";
+
+export const userWorkspaceSchema = z.object({
+    firstName: z.string().min(3).max(55),
+    lastName: z.string().min(3).max(55),
+    domain: z.string().min(0).max(55).optional(),
+    description: z.string().min(0).max(255).optional(),
+});
