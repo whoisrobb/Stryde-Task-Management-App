@@ -1,6 +1,6 @@
 "use server";
 
-import { BoardInputProps, BoardInputSchema } from "@/components/forms/create-board";
+import { BoardInputProps } from "@/components/forms/create-board";
 import { serverUrl } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 
