@@ -8,10 +8,12 @@ import { fetchUserBoards } from '@/app/actions/board-actions';
 import { BoardItem } from '@/lib/types';
 import Link from 'next/link';
 import WorkspaceHeader from '../_components/workspace-header';
+import { Separator } from '@/components/ui/separator';
+import CreateBoard from '@/components/forms/create-board';
 
 const Workspace = () => {
   const { userId } = useParams();
-  const [userBoards, setUserBoards] = useState<BoardItem[] | null>(null);
+  const [userBoards, setUserBoards] = useState<BoardItem[] | null>([]);
 
   useEffect(() => {
     fetchBoards();
@@ -23,11 +25,10 @@ const Workspace = () => {
   }
 
   return (
-    <div className="px-4 py-2">
+    <div className="px-4 py-2 space-y-4">
         <WorkspaceHeader />
-      <div className="">
-          {userBoards &&
-          <>
+        <Separator />
+        <div className="">
             <p className="capitalize text-lg font-bold">personal boards</p>
             <div className="grid lg:grid-cols-5 gap-2 md:grid-cols-4 grid-cols-2">
                 <Popover>
@@ -37,20 +38,20 @@ const Workspace = () => {
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent>
-                        {/* TODO: Add create board form component */}
-                        Placeholder
+                        <CreateBoard />
                     </PopoverContent>
                 </Popover>
-            {userBoards?.map((board) => (
-                <Link
-                    href={`/workspace/boards/${board.boardId}`}>
-                    className='h-20 py-2 px-4 border text-muted-foreground hover:bg-secondary hover:text-accent-foreground transition-colors'
-                    key={board.boardId}
-                  <p className="text-lg">{board.name}</p>
-                </Link>
-            ))}
+                {userBoards &&
+                    userBoards.map((board) => (
+                        <Link
+                            href={`/workspace/boards/${board.boardId}`}
+                            className='h-20 py-2 px-4 border text-muted-foreground hover:bg-secondary hover:text-accent-foreground transition-colors'
+                            key={board.boardId}
+                        >
+                            <p className="text-lg">{board.name}</p>
+                        </Link>
+                ))}
             </div>
-          </>}
         </div>
     </div>
   )

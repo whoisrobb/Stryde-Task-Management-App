@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { getAllUsers, getUserByEmail, saveOrUpdateUser, updateUserdata } from "../controllers/user";
+import { createBoard, getUserBoards } from "../controllers/board";
 
 // GET ALL USERS
 router.get('/users', getAllUsers);
@@ -13,5 +14,11 @@ router.post('/users/save', saveOrUpdateUser);
 
 // UPDATE USER DATA
 router.put('/users/save/:userId', updateUserdata);
+
+// GET USERS'S BOARDS
+router.get('/boards/:userId', getUserBoards);
+
+// CREATE BOARD
+router.post('/boards/save', createBoard);
 
 export default router;
