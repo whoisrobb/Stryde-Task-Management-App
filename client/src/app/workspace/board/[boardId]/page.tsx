@@ -1,6 +1,6 @@
 "use client";
 
-import { BoardItem, Card, List, ListCardProps, SearchParams } from '@/lib/types'
+import { BoardItem, ListCardProps, SearchParams } from '@/lib/types'
 import React, { useEffect, useState } from 'react'
 import BoardHeader from '../../_components/board-header'
 import { Separator } from '@/components/ui/separator'
