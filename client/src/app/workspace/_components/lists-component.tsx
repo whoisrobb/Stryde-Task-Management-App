@@ -20,6 +20,7 @@ import { Button } from '@/components/ui/button';
 import { ListCardProps } from '@/lib/types';
 import { DotsVerticalIcon, PlusIcon } from '@radix-ui/react-icons';
 import CardItem from './card-item';
+import CreateList from '@/components/forms/create-list';
 
 const ListsComponent = ({ listsData, boardId }: { listsData: ListCardProps[], boardId: string }) => {
     const [lists, setLists] = useState(listsData);
@@ -62,76 +63,78 @@ const ListsComponent = ({ listsData, boardId }: { listsData: ListCardProps[], bo
     <DragDropContext
       onDragEnd={handleDragDrop}
     >
-      <div className="my-2 flex gap-2 items-start">
-          {lists?.map((list) => (
-              <div key={list.listId} className="min-w-72 border p-2 rounded">
-                <Droppable droppableId={list.listId}>
-                  {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-2">
-                      <div className="rounded flex items-center justify-between px-2 py-1">
-                        <p className="">{list.name}</p>
-                        <div className="flex gap-1">
-                          <Popover>
-                              <PopoverTrigger>
-                                <button className='w-6 h-6 transition-colors hover:bg-secondary rounded flex justify-center items-center'><PlusIcon /></button>
-                              </PopoverTrigger>
-                              <PopoverContent>
-                                  {/* <CreateCard valueId={list.listId} getData={getData} /> */}
-                                  Placeholder
-                              </PopoverContent>
-                          </Popover>
-                          
-                          <Popover>
-                              <PopoverTrigger>
-                                <button className='w-6 h-6 transition-colors hover:bg-secondary rounded flex justify-center items-center'><DotsVerticalIcon /></button>
-                              </PopoverTrigger>
-                              <PopoverContent className='w-48 p-2'>
-                                  <button className='w-full text-left text-muted-foreground py-1 px-2 capitalize rounded hover:bg-accent hover:text-accent-foreground transition-colors'>placeholder</button>
-                                  <button className='w-full text-left text-muted-foreground py-1 px-2 capitalize rounded hover:bg-accent hover:text-accent-foreground transition-colors'>placeholder</button>
-                                  <button
-                                    className='w-full text-left text-destructive py-1 px-2 capitalize rounded hover:bg-[#ff49492b] hover:text-destructive-foreground transition-colors'
-                                    // onClick={() => deleteList({ valueId: list.ListID, getData })}
-                                  >
-                                    delete list
-                                </button>
-                              </PopoverContent>
-                          </Popover>
+        <div className="my-2 flex gap-2 items-start">
+            {lists?.map((list) => (
+                <div key={list.listId} className="min-w-72 bg-muted p-2 rounded">
+                    <Droppable droppableId={list.listId}>
+                    {(provided) => (
+                        <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-2">
+                        <div className="rounded flex items-center justify-between px-2 py-1">
+                            <p className="">{list.name}</p>
+                            <div className="flex gap-1">
+                            <Popover>
+                                <PopoverTrigger>
+                                    <button className='w-6 h-6 transition-colors hover:bg-secondary rounded flex justify-center items-center'><PlusIcon /></button>
+                                </PopoverTrigger>
+                                <PopoverContent>
+                                    {/* <CreateCard valueId={list.listId} getData={getData} /> */}
+                                    Placeholder
+                                </PopoverContent>
+                            </Popover>
+                            
+                            <Popover>
+                                <PopoverTrigger>
+                                    <button className='w-6 h-6 transition-colors hover:bg-secondary rounded flex justify-center items-center'><DotsVerticalIcon /></button>
+                                </PopoverTrigger>
+                                <PopoverContent className='w-48 p-2'>
+                                    <button className='w-full text-left text-muted-foreground py-1 px-2 capitalize rounded hover:bg-accent hover:text-accent-foreground transition-colors'>placeholder</button>
+                                    <button className='w-full text-left text-muted-foreground py-1 px-2 capitalize rounded hover:bg-accent hover:text-accent-foreground transition-colors'>placeholder</button>
+                                    <button
+                                        className='w-full text-left text-destructive py-1 px-2 capitalize rounded hover:bg-[#ff49492b] hover:text-destructive-foreground transition-colors'
+                                        // onClick={() => deleteList({ valueId: list.ListID, getData })}
+                                    >
+                                        delete list
+                                    </button>
+                                </PopoverContent>
+                            </Popover>
+                            </div>
                         </div>
-                      </div>
-                      {list.cards.map((card, index) => (
-                        <Draggable draggableId={card.cardId} index={index} key={card.cardId}>
-                          {(provided) => (
-                          <div
-                            {...provided.dragHandleProps}
-                            {...provided.draggableProps}
-                            ref={provided.innerRef}
-                          >
-                            <CardItem
-                                // card={card}
-                                // getData={getData}
-                            />
-                          </div>)}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              </div>
+                        {list.cards.map((card, index) => (
+                            <Draggable draggableId={card.cardId} index={index} key={card.cardId}>
+                            {(provided) => (
+                            <div
+                                {...provided.dragHandleProps}
+                                {...provided.draggableProps}
+                                ref={provided.innerRef}
+                            >
+                                <CardItem
+                                    // card={card}
+                                    // getData={getData}
+                                />
+                            </div>)}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                        </div>
+                    )}
+                    </Droppable>
+                </div>
             ))}
 
-          <Popover>
-              <PopoverTrigger>
-                  <Button variant={'secondary'} className='w-[15rem] rounded-sm'>Create list</Button>
-              </PopoverTrigger>
-              <PopoverContent>
-                  {/* <CreateList valueId={boardId as string} getData={getData} /> */}
-                  Placeholder
-              </PopoverContent>
-          </Popover>
+            <Popover>
+                <PopoverTrigger>
+                    <Button variant={'gooeyRight'} className='w-[15rem] rounded-sm'>Create list</Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                    <CreateList
+                        boardId={boardId}
+                        // getData={getData}
+                    />
+                </PopoverContent>
+            </Popover>
 
-      </div>
-      </DragDropContext>
+        </div>
+    </DragDropContext>
   )
 }
 
