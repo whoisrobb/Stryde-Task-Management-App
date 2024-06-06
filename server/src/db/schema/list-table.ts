@@ -23,4 +23,6 @@ export const ListTableRelations = relations(ListTable,
             cards: many(CardTable)
         }
     }
-)
+);
+
+export type List = typeof ListTable.$inferSelect;

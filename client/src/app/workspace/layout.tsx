@@ -9,11 +9,11 @@ export default function WorkspaceLayout({
 }>) {
   return (
     <body className="flex h-screen">
-        <Sidebar />
-            <div className="px-2 w-full">
-                <Header />
-                {children}
-            </div>
+      <Sidebar />
+      <div className="px-2 w-full">
+        <Header />
+        {children}
+      </div>
     </body>
   );
 }

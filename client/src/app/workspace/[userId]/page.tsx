@@ -44,7 +44,7 @@ const Workspace = () => {
                 {userBoards &&
                     userBoards.map((board) => (
                         <Link
-                            href={`/workspace/boards/${board.boardId}`}
+                            href={`/workspace/board/${board.boardId}`}
                             className='h-20 py-2 px-4 border text-muted-foreground hover:bg-secondary hover:text-accent-foreground transition-colors'
                             key={board.boardId}
                         >

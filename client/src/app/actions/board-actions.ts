@@ -41,3 +41,18 @@ export const createBoard = async (formData: BoardInputProps) => {
         console.error(err);
     }
 };
+
+// FETCH BOARD
+export const fetchBoard = async (boardId: string) => {
+    try {
+        const response = await fetch(`${serverUrl}/boards/board/${boardId}`);
+        const data = await response.json();
+        if (response.ok) {
+            return data;
+        } else {
+            return 'Something went wrong!'
+        }
+    } catch (err) {
+        console.error(err);
+    }
+};

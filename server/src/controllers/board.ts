@@ -33,3 +33,18 @@ export const createBoard = async (req: Request, res: Response) => {
         res.status(500).json(err)
     }
 };
+
+// FETCH SINGLE BOARD
+export const fetchSingleBoard = async (req: Request, res: Response) => {
+    try {
+        const { boardId } = req.params;
+
+        const board = await db.query.BoardTable.findFirst({
+            where: eq(BoardTable.boardId, boardId)
+        });
+
+        res.status(200).json(board);
+    } catch (err) {
+        res.status(500).json(err)
+    }
+};

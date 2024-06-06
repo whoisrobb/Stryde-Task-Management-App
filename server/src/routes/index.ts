@@ -1,7 +1,8 @@
 import express from "express";
 const router = express.Router();
 import { getAllUsers, getUserByEmail, saveOrUpdateUser, updateUserdata } from "../controllers/user";
-import { createBoard, getUserBoards } from "../controllers/board";
+import { createBoard, fetchSingleBoard, getUserBoards } from "../controllers/board";
+import { fetchFilteredLists } from "../controllers/list";
 
 // GET ALL USERS
 router.get('/users', getAllUsers);
@@ -20,5 +21,12 @@ router.get('/boards/:userId', getUserBoards);
 
 // CREATE BOARD
 router.post('/boards/save', createBoard);
+
+// FETCH SINGLE BOARD
+router.get('/boards/board/:boardId', fetchSingleBoard);
+
+// FETCH FILTERED LISTS
+router.post('/lists/:boardId', fetchFilteredLists);
+
 
 export default router;

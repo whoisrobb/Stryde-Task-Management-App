@@ -30,3 +30,5 @@ export const CardTableRelations = relations(CardTable,
         }
     }
 );
+
+export type Card = typeof CardTable.$inferSelect;
