@@ -3,7 +3,7 @@
 import { useUserStore } from "@/store/user-store";
 import Link from "next/link";
 
-const SidebarHeader = () => {
+const NavHeader = () => {
     const user = useUserStore((state) => state.userData);
   return (
     <div className="border-b h-16 px-2 flex items-center">
@@ -14,4 +14,4 @@ const SidebarHeader = () => {
   )
 }
 
-export default SidebarHeader;
+export default NavHeader;

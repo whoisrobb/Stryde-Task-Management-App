@@ -12,11 +12,11 @@ import {
 import { Button } from '../ui/button'
 import { ExitIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { useSidebarStore } from '@/store/sidebar-store';
-import SidebarHeader from './sidebar-header';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useUserStore } from '@/store/user-store';
 import { cn } from '@/lib/utils';
+import NavHeader from './nav-header';
 
 
 const SidebarMobile = () => {
@@ -29,7 +29,7 @@ const SidebarMobile = () => {
       <SheetContent side={'left'}>
         <SheetHeader>
           <SheetTitle>
-            <SidebarHeader />
+            <NavHeader />
           </SheetTitle>
           <SheetDescription>
             <SidebarContent />

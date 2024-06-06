@@ -1,11 +1,11 @@
 import React from 'react'
-import SidebarHeader from '../elements/sidebar-header'
 import SidebarDesktop from '../elements/sidebar-desktop'
+import NavHeader from '../elements/nav-header'
 
 const Sidebar = () => {
   return (
     <div className='border-r lg:block hidden'>
-      <SidebarHeader />
+      <NavHeader />
       <SidebarDesktop />
     </div>
   )
