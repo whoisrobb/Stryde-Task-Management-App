@@ -2,15 +2,6 @@
 
 import React, { useState } from 'react'
 import {
-    Select,
-    SelectContent,
-    // SelectGroup,
-    SelectItem,
-    // SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-import {
     Popover,
     PopoverContent,
     PopoverTrigger,
@@ -21,6 +12,7 @@ import { ListCardProps } from '@/lib/types';
 import { DotsVerticalIcon, PlusIcon } from '@radix-ui/react-icons';
 import CardItem from './card-item';
 import CreateList from '@/components/forms/create-list';
+import CreateCard from '@/components/forms/create-card';
 
 const ListsComponent = ({ listsData, boardId }: { listsData: ListCardProps[], boardId: string }) => {
     const [lists, setLists] = useState(listsData);
@@ -77,8 +69,10 @@ const ListsComponent = ({ listsData, boardId }: { listsData: ListCardProps[], bo
                                     <button className='w-6 h-6 transition-colors hover:bg-secondary rounded flex justify-center items-center'><PlusIcon /></button>
                                 </PopoverTrigger>
                                 <PopoverContent>
-                                    {/* <CreateCard valueId={list.listId} getData={getData} /> */}
-                                    Placeholder
+                                    <CreateCard
+                                        listId={list.listId}
+                                        // getData={getData}
+                                    />
                                 </PopoverContent>
                             </Popover>
                             

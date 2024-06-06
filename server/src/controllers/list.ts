@@ -49,7 +49,7 @@ export const createList = async (req: Request, res: Response) => {
             })
             .returning()
 
-            res.status(201).json(list)
+            res.status(201).json(list[0])
 
     } catch (err) {
         res.status(500).json(err)

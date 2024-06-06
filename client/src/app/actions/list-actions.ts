@@ -1,7 +1,6 @@
 "use server";
 
 import { ListInputProps } from "@/components/forms/create-list";
-import { SearchParams } from "@/lib/types";
 import { serverUrl } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 

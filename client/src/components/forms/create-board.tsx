@@ -1,6 +1,6 @@
 "use client";
 
-import { boardSchema, userWorkspaceSchema } from '@/lib/validators';
+import { boardSchema } from '@/lib/validators';
 import { useUserStore } from '@/store/user-store';
 import { zodResolver } from "@hookform/resolvers/zod"
 import React from 'react'

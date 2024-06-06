@@ -9,16 +9,16 @@ import SidebarMobile from '../elements/sidebar-mobile'
 const Header = () => {
   return (
     <div className='h-16 w-full border-b flex items-center justify-between px-2'>
-        <SidebarMobile />
-        <SearchInput />
+      <SidebarMobile />
+      <SearchInput />
 
-        <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-                <ModeToggle />
-                <NotificationsElement />
-            </div>
-            <AvatarButton />
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <ModeToggle />
+          <NotificationsElement />
         </div>
+        <AvatarButton />
+      </div>
     </div>
   )
 }

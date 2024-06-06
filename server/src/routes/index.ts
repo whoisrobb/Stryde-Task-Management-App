@@ -3,6 +3,7 @@ const router = express.Router();
 import { getAllUsers, getUserByEmail, saveOrUpdateUser, updateUserdata } from "../controllers/user";
 import { createBoard, fetchSingleBoard, getUserBoards } from "../controllers/board";
 import { createList, fetchFilteredLists } from "../controllers/list";
+import { createCard } from "../controllers/card";
 
 // GET ALL USERS
 router.get('/users', getAllUsers);
@@ -30,6 +31,9 @@ router.post('/lists/save/:boardId', createList);
 
 // FETCH FILTERED LISTS
 router.post('/lists/:boardId', fetchFilteredLists);
+
+// CREATE NEW CARD
+router.post('/cards/save/:listId', createCard);
 
 
 export default router;
