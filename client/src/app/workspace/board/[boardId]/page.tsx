@@ -9,7 +9,7 @@ import { fetchBoard } from '@/app/actions/board-actions';
 import { fetchFilteredLists } from '@/app/actions/list-actions';
 import ListsComponent from '../../_components/lists-component';
 
-const Board = ({ searchParams }: SearchParams) => {
+const Board = ({ searchParams }: { searchParams: string | string[] | undefined }) => {
     const { boardId } = useParams();
     const [boardDetails, setBoardDetail] = useState<BoardItem | null>(null);
     const [lists, setLists] = useState<ListCardProps[] | null>(null);
